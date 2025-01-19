@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: #FFFDF496;
+        --foreground: #F5F2E8;
+        --title: #444444;
+        --border: #D6D6D6;
+        --paragraph: #0000007F;
+        --primary: #DFBD43;
+    }
+
+    .dark {
+
+        --background: #000000;
+        --foreground: transparent;
+        --title: #FFFFFF;
+        --paragraph: #FFFFFF;
+    }
+}
+
+@layer utilities {
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+}
+
+.font-inter {
+  @apply font-sans;
+  font-family: 'Inter', sans-serif;
+}
+
+.font-rubik {
+  @apply font-sans;
+  font-family: 'Rubik', sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.inner-curve {
+    --r: 20px;  /* control the rounded part */
+    --s: 24px;  /* control the size of the cut */
+    --a: 16deg; /* control the depth of the curvature */
+    --p: 50%;   /* control the position */
+
+    height: 70px;
+    aspect-ratio: 3/2;
+    background: #EDEAEA;
+    border-radius: 30px;
+    --_m:var(--r),#000 calc(100% - 1px),#0000;
+    --_d: calc((var(--s) + var(--r)) * cos(var(--a)));
+    mask:
+            radial-gradient(var(--r) at calc(var(--p) + var(--_d)) var(--_m)),
+            radial-gradient(var(--r) at calc(var(--p) - var(--_d)) var(--_m)),
+            radial-gradient(var(--s) at var(--p) calc(-1 * sin(var(--a)) * var(--s)),
+            #0000 100%,#000 calc(100% + 1px)) 0 calc(var(--r)*(1 - sin(var(--a)))) no-repeat,
+            linear-gradient(90deg,#000 calc(var(--p) - var(--_d)),#0000 0 calc(var(--p) + var(--_d)),#000 0);
+}
