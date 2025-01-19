@@ -8,13 +8,13 @@ import { useTodos } from '@/context/todo-context';
 type Props = {
   data: ITodo[];
 };
-export default function TodoList(props: Props) {
-  // const [todos, setTodos] = useState<ITodo[]>(props.data);
+export default function TodoList({ data }: Props) {
   const { todos, setTodos } = useTodos();
 
   useEffect(() => {
-    setTodos(props.data);
-  }, [props.data]);
+    setTodos(data);
+    // eslint-disable-next-line
+  }, [data]);
 
   return (
     <div className="p-4 flex-1 flex flex-col overflow-y-auto no-scrollbar">
